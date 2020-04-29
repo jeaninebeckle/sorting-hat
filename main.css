@@ -1,3 +1,9 @@
-body {
-  background-color: silver;
+.display-4, .lead, .top, .question {
+  text-align: center;
+}
+
+.jumbotron {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px
 }
