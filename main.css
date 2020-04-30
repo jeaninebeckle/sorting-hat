@@ -7,3 +7,29 @@
   margin-right: auto;
   width: 1000px
 }
+
+#firstForm {
+  border: .6px solid black;
+  border-radius: 5px;
+  text-align: center;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#startSort {
+  border: 1px solid darkgray;
+}
+
+h2 {
+  margin-left: 20px;
+}
+
+#staticEmail2 {
+  margin-left: 20px;
+}
+.form-control {
+  margin-top: auto;
+}
+
+.form-inline {
