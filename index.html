@@ -26,8 +26,22 @@
     <hr class="my-4">
     <p class="question">Will you end up in Gryffindor, Hufflepuff, Ravenclaw, or Slytherin?</p>
     <p class="lead">
-      <a class="btn btn-primary btn-lg" href="#" role="button">Let the Sorting begin!</a>
+      <a id="sortButton" class="btn btn-primary btn-lg" href="#" role="button" onclick="showFirstForm()">Let the Sorting begin!</a>
     </p>
+  </div>
+  <div id=firstForm style=display:none>
+    <form class="form-inline">
+      <div class="form-group mb-2">
+        <h2>What's Your Name?</h2>
+        <label for="staticEmail2" class="sr-only"></label>
+        <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Student:">
+      </div>
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="inputPassword2" class="sr-only"></label>
+        <input type="text" class="form-control" id="inputPassword2" placeholder="Harry Potter">
+      </div>
+      <button id=startSort type="submit" class="btn btn-light">Sort!</button>
+    </form>
   </div>
   <script src="main.js"></script>
 </body>
