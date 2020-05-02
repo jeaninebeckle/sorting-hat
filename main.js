@@ -10,6 +10,8 @@ const validateForm = () => {
   if (x == "" || x == null) {
     alert ("Even though the Sorting Hat can read minds, you must type a name in the box first!");
     return false;
+  } else {
+    return true
   }
 }
 
@@ -20,25 +22,27 @@ const assignToHouse = () => {
   let randomNumber = Math.floor(Math.random() * (houses.length));
   document.getElementById("startSort").value= houses[randomNumber];
   sortedStudents.push(document.getElementById("inputPassword2").value,(houses[randomNumber]));
-  console.log(sortedStudents)
 }
 
 
 let studentArray = [];
+let studentIndex=0
 
 const clickSortButton = () => {
-  validateForm();
-  assignToHouse();
-  let newStudent = {};
-  newStudent['name'] = document.getElementById("inputPassword2").value;
-  newStudent['house'] = houses[Math.floor(Math.random() * (houses.length))];
-  newStudent['uniqueId'] = Date.now();
-  console.log(newStudent);
-  studentArray.push(newStudent);
-  console.log(studentArray)
-  buildStudentCards(studentArray);
-  document.getElementById("inputPassword2").value = null;
+  if (validateForm () == true) {
+    assignToHouse ();
+    let newStudent = {};
+    newStudent['name'] = document.getElementById("inputPassword2").value;
+    newStudent['house'] = houses[Math.floor(Math.random() * (houses.length))];
+    newStudent['uniqueId'] = studentIndex;
+    console.log(newStudent);
+    studentArray.push(newStudent);
+    console.log(studentArray)
+    buildStudentCards(studentArray);
+    document.getElementById("inputPassword2").value = null;
+    studentIndex++
   }
+}
 
 
 
@@ -50,8 +54,6 @@ const printToDom = (divId, textToPrint) => {
 const buildStudentCards = (studentArray) => {
   let domString = '<div class="row">';
 
-   if (document.getElementById("inputPassword2").value !== "" || null) {
-
     for (let i=0; i<studentArray.length; i++) {
 
     domString += `
@@ -60,41 +62,53 @@ const buildStudentCards = (studentArray) => {
           <div class="card-body">
             <h5 class="card-title">${studentArray[i].name}</h5>
             <p class="card-text">${studentArray[i].house}</p>
-            <button id="expel" class="btn btn-primary">Expel</button>
+            <button id =${studentArray[i].uniqueId} class="btn btn-primary expel">Expel</button>
           </div>
         </div>
       </div>
       `;
-      console.log(studentArray[i].uniqueId)
   }
   domString += '</div>'
 
   printToDom("students", domString)
+  addExpelEvent();
   }
-}
 
-const expelStudent = () => {
-  let idValue = '';
-  studentArray.forEach(student => {
-     if (studentArray.uniqueId === id) {
-      console.log(student.uniqueId)
-      idValue = student.indexOf(student);
-     }
-  });
-  console.log(idValue)
-  return idValue;
+
+
+const expelStudent = (id) => {
+  for (let i=0; i<studentArray.length; i++) {
+     if (studentArray[i].uniqueId === id) {
+      studentArray.splice(id, 1)
+     } 
+   }
 }
 
 const findStudents = () => {
-  expelStudent(studentArray[0].uniqueId)
+  for (let i=0; i<studentArray.length; i++) {
+  expelStudent(studentArray[i].uniqueId)
+  }
 }
+
+const addExpelEvent = () => {
+  const expelButtons = document.getElementsByClassName('expel')
+  for (let i=0; i<expelButtons.length; i++) {
+    expelButtons[i].addEventListener("click", expelStudentEvent)
+  }
+}
+
+const expelStudentEvent = (event) => {
+  const goodbyeStudent = (event.target.id)
+  expelStudent(goodbyeStudent)
+}
+
+
+
 
 let voldemortsArmy = []
 
 const clickEvents = () => {
   document.getElementById("startSort").addEventListener("click", clickSortButton);
-  console.log("Made it past startsort buttons")
-  document.getElementById("expel").addEventListener("click", findStudents);
  }
 
 const init = () => {
@@ -107,3 +121,5 @@ init ();
 
 //todo: on a click event, make the value of the input box null
 // figure out how to target by unique id and remove from studentArray
+
+//match up student id with their index in the array
