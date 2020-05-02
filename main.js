@@ -77,12 +77,14 @@ const buildStudentCards = (studentArray) => {
 
 
 const expelStudent = (id) => {
-  for (let i=0; i<studentArray.length; i++) {
-     if (studentArray[i].uniqueId === id) {
-      studentArray.splice(id, 1)
-     } 
-   }
+  studentArray = studentArray.filter(function (s) {
+    if (id != s.uniqueId) {
+      return s
+    } 
+  })
+  buildStudentCards(studentArray)
 }
+     
 
 const findStudents = () => {
   for (let i=0; i<studentArray.length; i++) {
