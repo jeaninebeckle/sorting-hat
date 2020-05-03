@@ -21,7 +21,9 @@
   margin-right: auto;
 }
 
-
+.row {
+  margin: 20px;
+}
 /* h2 {
   margin-top: auto;
 }
@@ -47,4 +49,9 @@
 
 #slytherin {
   background-color: green;
+}
+
+.expelled-students {
+  background-color: black;
+  color: red;
 }
