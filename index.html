@@ -26,7 +26,7 @@
     <hr class="my-4">
     <p class="question">Will you end up in Gryffindor, Hufflepuff, Ravenclaw, or Slytherin?</p>
     <p class="lead">
-      <a id="sortButton" class="btn btn-primary btn-lg" href="#" role="button" onclick="showFirstForm()">Let the Sorting begin!</a>
+      <a id="sortButton" class="btn btn-primary btn-lg" href="#firstForm" role="button" onclick="showFirstForm()">Let the Sorting begin!</a>
     </p>
   </div>
   <div id=firstForm style=display:none>
@@ -37,17 +37,19 @@
         <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Student:">
       </div>
       <div class="form-group mx-sm-3 mb-2">
-        <label for="inputPassword2" class="sr-only"></label>
-        <input type="text" name="fName" class="form-control" id="inputPassword2" placeholder="">  
+        <label for="studentName" class="sr-only"></label>
+        <input type="text" name="fName" class="form-control" id="studentName" placeholder="No Muggles Allowed">  
         <button id="startSort" type="submit" class="btn btn-light">Sort!</button> 
       </div>
-      
     </form>
   </div>
+  
   <div id="students" class="container-fluid">
-    
+  </div>
+
+  <div id="expelled" class="container-fluid">
   </div>
   
-  <script src="main.js"></script>
-</body>
+    <script src="main.js"></script>
+  </body>
 </html>

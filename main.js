@@ -1,9 +1,13 @@
+//the form used to sort students is hidden until this function runs with a button click
+
 const showFirstForm = () => {
   let x = document.getElementById("firstForm");
   if (x.style.display === "none") {
     x.style.display = "block";
   }
 }
+
+//alerts user to enter a name if sort button is clicked while form is empty
 
 const validateForm = () => {
   let x = document.forms["myForm"]["fName"].value;
@@ -15,15 +19,18 @@ const validateForm = () => {
   }
 }
 
+//function to randomly sort students into one of four houses
+
 const houses =["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
 const sortedStudents = []
 
 const assignToHouse = () => {
   let randomNumber = Math.floor(Math.random() * (houses.length));
   document.getElementById("startSort").value= houses[randomNumber];
-  sortedStudents.push(document.getElementById("inputPassword2").value,(houses[randomNumber]));
+  sortedStudents.push(document.getElementById("studentName").value,(houses[randomNumber]));
 }
 
+//takes sorted student and puts them in a student array along with a house and unique id
 
 let studentArray = [];
 let studentIndex=0
@@ -32,19 +39,19 @@ const clickSortButton = () => {
   if (validateForm () == true) {
     assignToHouse ();
     let newStudent = {};
-    newStudent['name'] = document.getElementById("inputPassword2").value;
+    newStudent['name'] = document.getElementById("studentName").value;
     newStudent['house'] = houses[Math.floor(Math.random() * (houses.length))];
     newStudent['uniqueId'] = studentIndex;
     console.log(newStudent);
     studentArray.push(newStudent);
     console.log(studentArray)
     buildStudentCards(studentArray);
-    document.getElementById("inputPassword2").value = null;
+    document.getElementById("studentName").value = null;
     studentIndex++
   }
 }
 
-
+//prints sorted student cards to dom
 
 const printToDom = (divId, textToPrint) => {
   const selectedDiv = document.getElementById(divId);
@@ -75,22 +82,15 @@ const buildStudentCards = (studentArray) => {
   }
 
 
-
-const expelStudent = (id) => {
-  studentArray = studentArray.filter(function (s) {
-    if (id != s.uniqueId) {
-      return s
-    } 
-  })
-  buildStudentCards(studentArray)
-}
-     
+//Gets unique id for student and creates id for expelStudent function
 
 const findStudents = () => {
   for (let i=0; i<studentArray.length; i++) {
   expelStudent(studentArray[i].uniqueId)
   }
 }
+
+//Assigns a unique id to each button on a student card
 
 const addExpelEvent = () => {
   const expelButtons = document.getElementsByClassName('expel')
@@ -99,15 +99,55 @@ const addExpelEvent = () => {
   }
 }
 
+//targets expel button by unique id, expels student, and creates expelled students cards
+
 const expelStudentEvent = (event) => {
-  const goodbyeStudent = (event.target.id)
-  expelStudent(goodbyeStudent)
+  const goodbyeStudent = (event.target.id);
+  expelStudent(goodbyeStudent);
+  buildExpelledStudents(voldemortsArmy);
 }
 
 
-
+//expels students if expel button is clicked and puts them in a new array
 
 let voldemortsArmy = []
+
+const expelStudent = (id) => {
+  studentArray = studentArray.filter(function (s) {
+    if (id != s.uniqueId) {
+      return s
+    } else {
+      if (id == s.uniqueId) {
+        voldemortsArmy.push(s)
+      }
+    }
+  })
+  buildStudentCards(studentArray);
+}
+
+//Prints Voldemort's Army to dom below regular students
+
+const buildExpelledStudents = (voldemortsArmy) => {
+  let domString = '<div class="row">';
+
+    for (let i=0; i<voldemortsArmy.length; i++) {
+
+    domString += `
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body expelled-students">
+            <h4>Voldemort's Army</h4>
+            <h5 class="card-title">${voldemortsArmy[i].name}</h5>
+          </div>
+        </div>
+      </div>
+      `;
+  }
+  domString += '</div>'
+
+  printToDom("expelled", domString)
+}
+
 
 const clickEvents = () => {
   document.getElementById("startSort").addEventListener("click", clickSortButton);
@@ -119,9 +159,3 @@ const init = () => {
 }
 
 init ();
-
-
-//todo: on a click event, make the value of the input box null
-// figure out how to target by unique id and remove from studentArray
-
-//match up student id with their index in the array
