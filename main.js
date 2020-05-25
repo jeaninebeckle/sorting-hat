@@ -64,7 +64,7 @@ const buildStudentCards = (studentArray) => {
     for (let i=0; i<studentArray.length; i++) {
 
     domString += `
-      <div class="col-sm-6">
+      <div class="col">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">${studentArray[i].name}</h5>
@@ -77,6 +77,7 @@ const buildStudentCards = (studentArray) => {
   }
   domString += '</div>'
 
+  
   printToDom("students", domString)
   addExpelEvent();
   }
@@ -133,7 +134,7 @@ const buildExpelledStudents = (voldemortsArmy) => {
     for (let i=0; i<voldemortsArmy.length; i++) {
 
     domString += `
-      <div class="col-sm-6">
+      <div class="col">
         <div class="card">
           <div class="card-body expelled-students">
             <h4>Voldemort's Army</h4>

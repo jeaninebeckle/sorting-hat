@@ -24,16 +24,15 @@
 .row {
   margin: 20px;
 }
-/* h2 {
-  margin-top: auto;
+
+.card {
+  width: 300px;
+  text-align: center;
 }
 
-#staticEmail2 {
-  margin-left: auto
+.col {
+  width: 350px;
 }
-.form-control {
-  margin-top: auto;
-} */
 
 #gryffindor {
   background-color: red;
