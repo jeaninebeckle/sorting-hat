@@ -9,6 +9,11 @@ This is a Harry Potter-themed homework assignment to practice using Bootstrap an
 * Expel button deletes sorted student 
 * Expelled students reappear as members of Voldemort's Army
 
+### How To Run
+1. Clone the repo to have it on your local machine
+1. Use `hs` to start up a local server
+1. Visit the server in your browser (defaults to localhost:8080)
+
 ### Screenshots
 ![Main View](./images/sortinghat.png)
 
