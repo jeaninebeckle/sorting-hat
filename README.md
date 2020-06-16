@@ -15,7 +15,8 @@ This is a Harry Potter-themed homework assignment to practice using Bootstrap an
 1. Use `hs` to start up a local server
 1. Visit the server in your browser (defaults to localhost:8080)
 
-
+### Screenshots
+![Main View](./images/sortinghat.png)
 
 ### Contributors
 * [Jeanine Beckle](https://github.com/jeaninebeckle)
