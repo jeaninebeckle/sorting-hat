@@ -7,7 +7,8 @@ This is a Harry Potter-themed homework assignment to practice using Bootstrap an
 * Randomly assigns any name you give it to one of the four Hogwarts houses
 * Prevents sorting a null value for a name
 * Expel button deletes sorted student 
-* Expelled students reappear as members of Voldemort's Army
+* The background color of each card prints with the corresponding color of the house into which they were sorted.
+* Expelled students reappear as members of Voldemort's Army with different styling
 
 ### How To Run
 1. Clone the repo to have it on your local machine
@@ -19,7 +20,3 @@ This is a Harry Potter-themed homework assignment to practice using Bootstrap an
 
 ### Contributors
 * [Jeanine Beckle](https://github.com/jeaninebeckle)
-
-### TODO
-* Change background color of student cards to one of four colors based on what house they're in
-* Improve styling/layout of content in the "What's Your Name" box
