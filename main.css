@@ -4,15 +4,28 @@
 
 #firstForm {
   border: .6px solid black;
-  border-radius: 5px;
+  border-radius: 2px;
   text-align: center;
-  max-width: 1000px;
+  max-width: 340px;
   margin-left: auto;
   margin-right: auto;
+  padding: 10px;
+}
+
+h4 {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#staticEmail2 {
+  font-size: 1.25em;
+  text-align: center;
 }
 
 #startSort {
   border: 1px solid darkgray;
+  margin: 10px;
 }
 
 .jumbotron {
@@ -28,26 +41,27 @@
 .card {
   width: 300px;
   text-align: center;
+  margin-top: 20px;
 }
 
 .col {
   width: 350px;
 }
 
-#gryffindor {
-  background-color: red;
+.Gryffindor {
+  background-color: rgb(180, 12, 12);
 }
 
-#hufflepuff {
-  background-color: yellow;
+.Hufflepuff {
+  background-color: rgba(231, 213, 48, 0.74);
 }
 
-#ravenclaw {
-  background-color: blue;
+.Ravenclaw {
+  background-color: rgb(74, 117, 197);
 }
 
-#slytherin {
-  background-color: green;
+.Slytherin {
+  background-color: rgb(77, 110, 77);
 }
 
 .expelled-students {

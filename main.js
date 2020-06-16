@@ -66,16 +66,17 @@ const buildStudentCards = (studentArray) => {
     domString += `
       <div class="col">
         <div class="card">
-          <div class="card-body">
+          <div class="card-body ${studentArray[i].house}">
             <h5 class="card-title">${studentArray[i].name}</h5>
             <p class="card-text">${studentArray[i].house}</p>
-            <button id =${studentArray[i].uniqueId} class="btn btn-primary expel">Expel</button>
+            <button id =${studentArray[i].uniqueId} class="btn btn-outline-danger expel">Expel</button>
           </div>
         </div>
       </div>
       `;
   }
   domString += '</div>'
+  
 
   
   printToDom("students", domString)
